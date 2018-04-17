@@ -9,7 +9,7 @@ VendingMachine.prototype.viewItems = function(){
 
 VendingMachine.prototype.selectItem = function(item){
   if (this.currentBalance >= this.itemList[item]) {
-    return "Thank you, Please take your item."
+    return this._successfulDispense(item)
   } else {
     return "You have selected " + item + ", please insert £" + this.itemList[item]
   }
@@ -17,4 +17,9 @@ VendingMachine.prototype.selectItem = function(item){
 
 VendingMachine.prototype.insertCoin = function(amount){
   this.currentBalance += amount
+}
+
+VendingMachine.prototype._successfulDispense = function(item){
+  this.currentBalance -= this.itemList[item]
+  return "Thank you, Please take your item."
 }

@@ -1,7 +1,7 @@
 describe('VendingMachine', function(){
 
   var vendingMachine
-  
+
   beforeEach(function(){
     vendingMachine = new VendingMachine
   })
@@ -30,5 +30,11 @@ describe('VendingMachine', function(){
   it('if balance is correct it dispenses item', function(){
     vendingMachine.insertCoin(2)
     expect(vendingMachine.selectItem('Kit-Kat')).toEqual('Thank you, Please take your item.')
+  })
+
+  it('subtracts cost of dispensed item from balance', function(){
+    vendingMachine.insertCoin(10)
+    vendingMachine.selectItem('Kit-Kat')
+    expect(vendingMachine.currentBalance).toEqual(8.45)
   })
 })
