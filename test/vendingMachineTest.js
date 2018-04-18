@@ -48,6 +48,6 @@ describe('VendingMachine', function(){
   it('shows success message with change value when collectChange is called', function(){
     vendingMachine.insertCoin(10)
     vendingMachine.selectItem('Kit-Kat')
-    expect(vendingMachine.collectChange()).toEqual('Please take your change')
+    expect(vendingMachine.collectChange()).toEqual('8.45 returned, please take your change')
   })
 })
