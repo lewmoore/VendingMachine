@@ -50,4 +50,15 @@ describe('VendingMachine', function(){
     vendingMachine.selectItem('Kit-Kat')
     expect(vendingMachine.collectChange()).toEqual('8.45 returned, please take your change')
   })
+
+  it('returnCoins function returns entire currentBalance', function(){
+    vendingMachine.insertCoin(10)
+    expect(vendingMachine.returnCoins()).toEqual('Coins returned')
+  })
+
+  it('returnCoins resets balance to 0', function(){
+    vendingMachine.insertCoin(10)
+    vendingMachine.returnCoins()
+    expect(vendingMachine.currentBalance).toEqual(0)
+  })
 })

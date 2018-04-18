@@ -29,3 +29,9 @@ VendingMachine.prototype.collectChange = function(){
   this.currentBalance = 0
   return change + ' returned, please take your change'
 }
+
+VendingMachine.prototype.returnCoins = function(){
+  var change = this.currentBalance
+  this.currentBalance = 0
+  return 'Coins returned'
+}
