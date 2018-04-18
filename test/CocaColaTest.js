@@ -9,4 +9,8 @@ describe('CocaCola', function(){
   it('intialises with name prop', function(){
     expect(cocacola.name).toEqual('Coca Cola')
   })
+
+  it('initialises with price prop', function(){
+    expect(cocacola.price).toEqual(3.65)
+  })
 })
