@@ -37,4 +37,11 @@ describe('VendingMachine', function(){
     vendingMachine.selectItem('Kit-Kat')
     expect(vendingMachine.currentBalance).toEqual(8.45)
   })
+
+  it("dispenses change when collectChange method is called", function(){
+    vendingMachine.insertCoin(10)
+    vendingMachine.selectItem('Kit-Kat')
+    vendingMachine.collectChange()
+    expect(vendingMachine.currentBalance).toEqual(0)
+  })
 })
