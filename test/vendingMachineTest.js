@@ -8,11 +8,11 @@ describe('VendingMachine', function(){
   })
   describe('Without Coins', function(){
     it('is initialised with a list of items', function(){
-      expect(vendingMachine.itemList).toEqual({'KitKat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75})
+      expect(vendingMachine.itemList).toEqual({'KitKat': 1.55, 'CocaCola': 3.65, 'Crisps': 2.75})
     })
 
     it('can view the list of items in the vending machine', function(){
-      expect(vendingMachine.viewItems()).toEqual({'KitKat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75})
+      expect(vendingMachine.viewItems()).toEqual({'KitKat': 1.55, 'CocaCola': 3.65, 'Crisps': 2.75})
     })
 
     it('can select an item in the intemList', function(){
