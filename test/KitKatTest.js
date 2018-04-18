@@ -13,4 +13,8 @@ describe('KitKat', function(){
   it('intialises with a price prop', function(){
     expect(kitkat.price).toEqual(1.55)
   })
+
+  it('initialises with a quantity prop', function(){
+    expect(kitkat.quantity).toEqual(5)
+  })
 })
