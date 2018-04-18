@@ -1,10 +1,11 @@
 class VendingMachine {
-  constructor(){
+  constructor(crisps = new Crisps){
     this.itemList = {'KitKat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75}
     this.currentBalance = 0
   }
 
   viewItems(){
+    // console.log(this.itemList.crisps.name)
     return this.itemList
   }
 
