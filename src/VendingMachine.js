@@ -1,6 +1,6 @@
 class VendingMachine {
   constructor(){
-    this.itemList = {'Kit-Kat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75}
+    this.itemList = {'KitKat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75}
     this.currentBalance = 0
   }
 
