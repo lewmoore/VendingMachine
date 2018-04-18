@@ -6,6 +6,10 @@ describe("Crisps", function(){
     crisps = new Crisps
   })
 
+  it('initialises with a name property', function(){
+    expect(crisps.name).toEqual('Crisps')
+  })
+
   it('initialises with a price property', function(){
     expect(crisps.price).toEqual(2.75)
   })
