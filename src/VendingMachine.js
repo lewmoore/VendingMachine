@@ -1,37 +1,39 @@
-function VendingMachine(){
-  this.itemList = {'Kit-Kat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75}
-  this.currentBalance = 0
-}
-
-VendingMachine.prototype.viewItems = function(){
-  return this.itemList
-}
-
-VendingMachine.prototype.selectItem = function(item){
-  if (this.currentBalance >= this.itemList[item]) {
-    return this._successfulDispense(item)
-  } else {
-    return "You have selected " + item + ", please insert £" + this.itemList[item]
+class VendingMachine {
+  constructor(){
+    this.itemList = {'Kit-Kat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75}
+    this.currentBalance = 0
   }
-}
 
-VendingMachine.prototype.insertCoin = function(amount){
-  this.currentBalance += amount
-}
+  viewItems(){
+    return this.itemList
+  }
 
-VendingMachine.prototype._successfulDispense = function(item){
-  this.currentBalance -= this.itemList[item]
-  return "Thank you, Please take your item."
-}
+  selectItem(item){
+    if (this.currentBalance >= this.itemList[item]) {
+      return this._successfulDispense(item)
+    } else {
+      return "You have selected " + item + ", please insert £" + this.itemList[item]
+    }
+  }
 
-VendingMachine.prototype.collectChange = function(){
-  var change = this.currentBalance
-  this.currentBalance = 0
-  return change + ' returned, please take your change'
-}
+  insertCoin(amount){
+    this.currentBalance += amount
+  }
 
-VendingMachine.prototype.returnCoins = function(){
-  var change = this.currentBalance
-  this.currentBalance = 0
-  return 'Coins returned'
+  _successfulDispense(item){
+    this.currentBalance -= this.itemList[item]
+    return "Thank you, Please take your item."
+  }
+
+  collectChange(){
+    var change = this.currentBalance
+    this.currentBalance = 0
+    return change + ' returned, please take your change'
+  }
+
+  returnCoins(){
+    var change = this.currentBalance
+    this.currentBalance = 0
+    return 'Coins returned'
+  }
 }
