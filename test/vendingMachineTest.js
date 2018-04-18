@@ -4,61 +4,63 @@ describe('VendingMachine', function(){
 
   beforeEach(function(){
     vendingMachine = new VendingMachine
+
+  })
+  describe('Without Coins', function(){
+    it('is initialised with a list of items', function(){
+      expect(vendingMachine.itemList).toEqual({'Kit-Kat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75})
+    })
+
+    it('can view the list of items in the vending machine', function(){
+      expect(vendingMachine.viewItems()).toEqual({'Kit-Kat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75})
+    })
+
+    it('can select an item in the intemList', function(){
+      expect(vendingMachine.selectItem('Kit-Kat')).toEqual("You have selected Kit-Kat, please insert £1.55")
+    })
+
+    it('intialises with a balance of 0', function(){
+      expect(vendingMachine.currentBalance).toEqual(0)
+    })
   })
 
-  it('is initialised with a list of items', function(){
-    expect(vendingMachine.itemList).toEqual({'Kit-Kat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75})
-  })
+  describe('With Coins', function(){
 
-  it('can view the list of items in the vending machine', function(){
-    expect(vendingMachine.viewItems()).toEqual({'Kit-Kat': 1.55, 'Coca-Cola': 3.65, 'Crisps': 2.75})
-  })
+    beforeEach(function(){
+      vendingMachine.insertCoin(10)
+    })
 
-  it('can select an item in the intemList', function(){
-    expect(vendingMachine.selectItem('Kit-Kat')).toEqual("You have selected Kit-Kat, please insert £1.55")
-  })
+    it('is able to accept money through insertcoin', function(){
+      expect(vendingMachine.currentBalance).toEqual(10)
+    })
 
-  it('intialises with a balance of 0', function(){
-    expect(vendingMachine.currentBalance).toEqual(0)
-  })
+    it('if balance is correct it dispenses item', function(){
+      expect(vendingMachine.selectItem('Kit-Kat')).toEqual('Thank you, Please take your item.')
+    })
 
-  it('is able to accept money through insertcoin', function(){
-    vendingMachine.insertCoin(10)
-    expect(vendingMachine.currentBalance).toEqual(10)
-  })
+    it('subtracts cost of dispensed item from balance', function(){
+      vendingMachine.selectItem('Kit-Kat')
+      expect(vendingMachine.currentBalance).toEqual(8.45)
+    })
 
-  it('if balance is correct it dispenses item', function(){
-    vendingMachine.insertCoin(2)
-    expect(vendingMachine.selectItem('Kit-Kat')).toEqual('Thank you, Please take your item.')
-  })
+    it("dispenses change when collectChange method is called", function(){
+      vendingMachine.selectItem('Kit-Kat')
+      vendingMachine.collectChange()
+      expect(vendingMachine.currentBalance).toEqual(0)
+    })
 
-  it('subtracts cost of dispensed item from balance', function(){
-    vendingMachine.insertCoin(10)
-    vendingMachine.selectItem('Kit-Kat')
-    expect(vendingMachine.currentBalance).toEqual(8.45)
-  })
+    it('shows success message with change value when collectChange is called', function(){
+      vendingMachine.selectItem('Kit-Kat')
+      expect(vendingMachine.collectChange()).toEqual('8.45 returned, please take your change')
+    })
 
-  it("dispenses change when collectChange method is called", function(){
-    vendingMachine.insertCoin(10)
-    vendingMachine.selectItem('Kit-Kat')
-    vendingMachine.collectChange()
-    expect(vendingMachine.currentBalance).toEqual(0)
-  })
+    it('returnCoins function returns entire currentBalance', function(){
+      expect(vendingMachine.returnCoins()).toEqual('Coins returned')
+    })
 
-  it('shows success message with change value when collectChange is called', function(){
-    vendingMachine.insertCoin(10)
-    vendingMachine.selectItem('Kit-Kat')
-    expect(vendingMachine.collectChange()).toEqual('8.45 returned, please take your change')
-  })
-
-  it('returnCoins function returns entire currentBalance', function(){
-    vendingMachine.insertCoin(10)
-    expect(vendingMachine.returnCoins()).toEqual('Coins returned')
-  })
-
-  it('returnCoins resets balance to 0', function(){
-    vendingMachine.insertCoin(10)
-    vendingMachine.returnCoins()
-    expect(vendingMachine.currentBalance).toEqual(0)
+    it('returnCoins resets balance to 0', function(){
+      vendingMachine.returnCoins()
+      expect(vendingMachine.currentBalance).toEqual(0)
+    })
   })
 })
