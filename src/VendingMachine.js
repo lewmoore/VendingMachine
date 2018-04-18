@@ -26,4 +26,5 @@ VendingMachine.prototype._successfulDispense = function(item){
 
 VendingMachine.prototype.collectChange = function(){
   this.currentBalance = 0
+  return 'Please take your change'
 }

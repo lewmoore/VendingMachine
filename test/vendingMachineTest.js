@@ -44,4 +44,10 @@ describe('VendingMachine', function(){
     vendingMachine.collectChange()
     expect(vendingMachine.currentBalance).toEqual(0)
   })
+
+  it('shows success message with change value when collectChange is called', function(){
+    vendingMachine.insertCoin(10)
+    vendingMachine.selectItem('Kit-Kat')
+    expect(vendingMachine.collectChange()).toEqual('Please take your change')
+  })
 })
