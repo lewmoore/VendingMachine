@@ -1,5 +1,5 @@
 class VendingMachine {
-  constructor(crisps = new Crisps){
+  constructor(){
     this.itemList = {'KitKat': 1.55, 'CocaCola': 3.65, 'Crisps': 2.75}
     this.currentBalance = 0
   }
