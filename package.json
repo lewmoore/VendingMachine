@@ -18,7 +18,7 @@
   "homepage": "https://github.com/lewmoore/VendingMachine#readme",
   "dependencies": {
     "jasmine": "^3.1.0",
-    "karma": "^2.0.0",
+    "karma": "^6.3.14",
     "karma-spec-reporter": "0.0.32"
   },
   "devDependencies": {
